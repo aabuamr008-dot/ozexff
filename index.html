@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ozex ff</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+
+/* ===== أساسيات ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #050011;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ===== خلفية هندسية متحركة ===== */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, #7a00ff33, transparent 25%),
+        radial-gradient(circle at 80% 80%, #0066ff33, transparent 25%),
+        radial-gradient(circle at 40% 60%, #ff00aa22, transparent 20%),
+        linear-gradient(135deg, #050011 0%, #0a0022 100%);
+    z-index: -2;
+    animation: moveBg 20s infinite alternate ease-in-out;
+    filter: blur(25px);
+}
+
+@keyframes moveBg {
+    0% {
+        transform: translate(0,0) scale(1);
+        background-position: 0% 0%;
+    }
+    50% {
+        transform: translate(20px,15px) scale(1.02);
+        background-position: 50% 50%;
+    }
+    100% {
+        transform: translate(0,0) scale(1);
+        background-position: 100% 100%;
+    }
+}
+
+/* ===== أنماط هندسية إضافية ===== */
+.geometric-shapes {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 20px;
+    opacity: 0.08;
+    filter: blur(15px);
+    animation: float 15s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #7a00ff, #0066ff);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #00eaff, #7a00ff);
+    bottom: 15%;
+    right: 10%;
+    border-radius: 50%;
+    animation-delay: 3s;
+}
+
+.shape-3 {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #ff00aa, #0066ff);
+    top: 60%;
+    left: 15%;
+    border-radius: 30px;
+    transform: rotate(45deg);
+    animation-delay: 6s;
+}
+
+.shape-4 {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #0066ff, #00eaff);
+    bottom: 20%;
+    left: 70%;
+    border-radius: 40px;
+    transform: rotate(25deg);
+    animation-delay: 9s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    66% {
+        transform: translateY(10px) rotate(-5deg);
+    }
+}
+
+/* ===== هيدر متطور ===== */
+header {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(122, 0, 255, 0.2);
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #7a00ff33, #0066ff33);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.profile-header {
+    position: relative;
+    z-index: 1;
+}
+
+.profile-img-header {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #7a00ff;
+    box-shadow: 0 0 30px #7a00ff, 0 0 60px #0066ff88;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+
+.profile-img-header:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #b78aff, #00eaff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(183, 138, 255, 0.5);
+}
+
+header p {
+    font-size: 18px;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ===== كارد ثلاثي الأبعاد للقصة ===== */
+.card-container {
+    perspective: 1200px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 28px;
+    padding: 35px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 0 30px #7a00ff44, 
+        0 0 60px #0066ff33,
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: rotateY(8deg) rotateX(4deg) translateY(-5px);
+    box-shadow: 
+        0 15px 40px #7a00ff66, 
+        0 0 80px #0066ff44,
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== زوايا هندسية على الكارد ===== */
+.card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+    opacity: 0.15;
+    filter: blur(25px);
+    z-index: -1;
+}
+
+.card::before {
+    top: -60px;
+    right: -60px;
+    background: linear-gradient(135deg, #7a00ff, #ff00aa);
+    animation: pulse 8s infinite alternate;
+}
+
+.card::after {
+    bottom: -60px;
+    left: -60px;
+    background: linear-gradient(135deg, #00eaff, #0066ff);
+    animation: pulse 8s infinite alternate-reverse;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.1;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 0.2;
+        transform: scale(1.1);
+    }
+}
+
+/* ===== عناوين الأقسام ===== */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    color: #b78aff;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #7a00ff, #00eaff, #7a00ff, transparent);
+    border-radius: 2px;
+}
+
+/* ===== نص القصة ===== */
+.story {
+    line-height: 1.9;
+    color: #ddd;
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.story strong {
+    color: #b78aff;
+    font-weight: 700;
+}
+
+.highlight {
+    background: linear-gradient(90deg, transparent, #7a00ff33, transparent);
+    padding: 5px 15px;
+    border-radius: 10px;
+    border-right: 3px solid #7a00ff;
+    margin: 15px 0;
+}
+
+/* ===== قسم الفيديوهات ===== */
+.videos-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.video-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.video-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(122, 0, 255, 0.3);
+    border-color: rgba(122, 0, 255, 0.3);
+}
+
+.video-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-info {
+    padding: 20px;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #b78aff;
+}
+
+.video-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aaa;
+    font-size: 16px;
+}
+
+.views {
+    color: #00eaff;
+    font-weight: 700;
+}
+
+/* ===== الأزرار Neon ===== */
+.btn {
+    display: block;
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 18px;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #7a00ff, #0066ff);
+    box-shadow: 0 0 25px #7a00ffaa, 0 0 50px #0066ff88;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0066ff, #7a00ff);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px #7a00ff, 0 0 70px #0066ff;
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn i {
+    margin-left: 10px;
+}
+
+/* ===== روابط التواصل ===== */
+.contact-section {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.contact-info {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-info p {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00eaff;
+    margin: 10px 0;
+}
+
+.email {
+    direction: ltr;
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    border: 1px solid rgba(0, 234, 255, 0.3);
+}
+
+/* ===== الفوتر ===== */
+footer {
+    text-align: center;
+    color: #bbb;
+    margin: 50px 0 30px;
+    font-size: 16px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.copyright {
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b78aff;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+    background: #7a00ff;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(122, 0, 255, 0.5);
+}
+
+/* ===== تصميم متجاوب ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 25px 15px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+    
+    .profile-img-header {
+        width: 120px;
+        height: 120px;
+    }
+    
+    header h1 {
+        font-size: 28px;
+    }
+    
+    header p {
+        font-size: 16px;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .story {
+        font-size: 16px;
+    }
+    
+    .videos {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        width: 95%;
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+    
+    .profile-img-header {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="geometric-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+</div>
+
+<header>
+    <div class="profile-header">
+        <img class="profile-img-header" src="491452926_17843227293478092_6467575474614289437_n.jpg" alt="صورة ozex ff">
+        <h1>ozex ff</h1>
+        <p>صانع محتوى يهدف لإثارة المشاعر وإحياء اللحظات</p>
+    </div>
+</header>
+
+<div class="card-container">
+    <div class="card">
+        <h2 class="section-title">قصة ركان - الشخص الذي غير مجرى التاريخ</h2>
+        <div class="story">
+            <p>مسيرتي بالمحتوى ما بلشت من فراغ، بل بدأت من شغف وحب لصناعة المحتوى.</p>
+            
+            <div class="highlight">
+                كنت أعيش اللحظات الخاصة فيني، وأسأل نفسي: ليش ما أخلي الناس تعيش معي نفس الشعور؟
+            </div>
+            
+            <p>بالبداية كنت أصور لقطات بسيطة إلي، لكن اكتشفت إنه إذا بدي أتميز… لازم أكون مختلف.</p>
+            <p>ومن هون انطلقت المسيرة!</p>
+            
+            <p><strong>لقطة غيرت مجرى التاريخ</strong>… صارت بصمة خاصة فيني. اخترتها لأنه لما تربطها بأي لقطة، تتحول إلى مشهد عظيم. صارت علامة تجارية مرتبطة باسمي.</p>
+            
+            <div class="highlight">
+                أنا ما بعمل فيديو حتى أستعرض لقطات… الهدف أكبر بكثير.
+            </div>
+            
+            <p>الفكرة إني أخلي المتابع يعيش اللحظة، ويحس بالحماس والخوف والانتصار!</p>
+            <p>هدفي إني أصنع هوية خاصة فيني بين صانعي المحتوى… واليوتيوب جزء من طموحاتي المستقبلية 💙</p>
+            
+            <p><strong>💢 اكتبلي رسالة، انتقاد، مدح، شكر، ذم… أي شيء من قلبك.</strong></p>
+            <p>بعد سنة رح أرجع لهون وأقرأ كل إشي… حتى أعرف وين كنت ووين صرت.</p>
+            <p style="text-align: center; margin-top: 20px; color: #b78aff; font-weight: 700;">شكرًا لكل حدا وصل لهون ❤️</p>
+        </div>
+        
+        <a class="btn" href="https://www.instagram.com/ozex_ff?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+            <i class="fab fa-instagram"></i> حساب الإنستقرام
+        </a>
+        <a class="btn" href="https://www.youtube.com/@ozex-ff" target="_blank">
+            <i class="fab fa-youtube"></i> قناة اليوتيوب
+        </a>
+    </div>
+</div>
+
+<div class="videos-section">
+    <h2 class="section-title">أكثر الفيديوهات مشاهدة</h2>
+    <div class="videos">
+        <a class="video-card" href="https://www.instagram.com/reel/DRhoafZDGih/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="491452926_17843227293478092_6467575474614289437_n.jpg" alt="فيديو 1">
+            <div class="video-info">
+                <div class="video-title">لقطة أسطورية في Free Fire</div>
+                <div class="video-stats">
+                    <span>مشاهدة على إنستغرام</span>
+                    <span class="views">140K مشاهدات</span>
+                </div>
+            </div>
+        </a>
+        
+        <a class="video-card" href="https://www.instagram.com/reel/DRKgOsnjHOq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="491452926_17843227293478092_6467575474614289437_n.jpg" alt="فيديو 2">
+            <div class="video-info">
+                <div class="video-title">لحظات حماسية لا تنسى</div>
+                <div class="video-stats">
+                    <span>مشاهدة على إنستغرام</span>
+                    <span class="views">240K مشاهدات</span>
+                </div>
+            </div>
+        </a>
+        
+        <a class="video-card" href="https://www.instagram.com/reel/DQzYNJNDJat/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="491452926_17843227293478092_6467575474614289437_n.jpg" alt="فيديو 3">
+            <div class="video-info">
+                <div class="video-title">أفضل اللحظات في 2025</div>
+                <div class="video-stats">
+                    <span>مشاهدة على إنستغرام</span>
+                    <span class="views">466K مشاهدات</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2 class="section-title">للتواصل والإعلانات</h2>
+    <div class="contact-info">
+        <p>البريد الإلكتروني:</p>
+        <div class="email">example@email.com</div>
+        <p style="margin-top: 20px; font-size: 16px; color: #ccc;">متاح للتعاون والشراكات والإعلانات</p>
+    </div>
+</div>
+
+<footer>
+    <div class="copyright">© 2025 جميع الحقوق محفوظة | ozex ff</div>
+    
+    <div class="social-icons">
+        <a href="https://www.instagram.com/ozex_ff" class="social-icon" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@ozex-ff" class="social-icon" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="mailto:example@email.com" class="social-icon">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>
